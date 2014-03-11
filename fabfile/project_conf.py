@@ -30,7 +30,7 @@ fabconf['SERVER_USERNAME'] = "ubuntu"
 fabconf['SSH_PATH'] = "~/.ssh"
 
 # Name of the private key file you use to connect to EC2 instances
-fabconf['EC2_KEY_NAME'] = "my_private_key.pem"
+fabconf['EC2_KEY_NAME'] = "my_ssh_key.pem"
 
 # Don't edit. Full path of the ssh key you use to connect to EC2 instances
 fabconf['SSH_PRIVATE_KEY_PATH'] = '%s/%s' % (fabconf['SSH_PATH'], fabconf['EC2_KEY_NAME'])
@@ -54,7 +54,7 @@ fabconf['ADMIN_EMAIL'] = "admin@example.com"
 fabconf['GIT_USERNAME'] = "EC2"
 
 # Name of the private key file used for github deployments
-fabconf['BITBUCKET_DEPLOY_KEY_NAME'] = "my_bitbucket_key"
+fabconf['BITBUCKET_DEPLOY_KEY_NAME'] = "bitbucket_rsa"
 
 # Don't edit. Local path for deployment key you use for github
 fabconf['BITBUCKET_DEPLOY_KEY_PATH'] = "%s/%s" % (fabconf['SSH_PATH'], fabconf['BITBUCKET_DEPLOY_KEY_NAME'])
@@ -70,7 +70,7 @@ fabconf['BITBUCKET_REPO'] = "ssh://git@bitbucket.org/%s/%s.git" % (fabconf['BITB
 fabconf['ACTIVATE'] = "source /home/%s/.virtualenvs/%s/bin/activate" % (fabconf['SERVER_USERNAME'], fabconf['PROJECT_NAME'])
 
 # Name tag for your server instance on EC2
-fabconf['INSTANCE_NAME_TAG'] = "TestInstance"
+fabconf['INSTANCE_NAME_TAG'] = "MyInstance"
 
 # EC2 key. http://bit.ly/j5ImEZ
 fabconf['AWS_ACCESS_KEY'] = ''
@@ -85,10 +85,10 @@ ec2_region = 'ap-southeast-2'
 ec2_amis = ['ami-51821b6b']
 
 # Name of the keypair you use in EC2. http://bit.ly/ldw0HZ
-ec2_keypair = 'insert ssh key pair name here'
+ec2_keypair = 'insert_keypair_name'
 
 # Name of the security group. http://bit.ly/kl0Jyn
-ec2_secgroups = ['TestAppSecurityGroup']
+ec2_secgroups = ['MySecurityGroup']
 
 # API Name of instance type. http://bit.ly/mkWvpn
 ec2_instancetype = 't1.micro'

@@ -88,7 +88,7 @@ configure_instance = [
   {"action":"virtualenv", "params":"pip install Django",
     "message":"Installing django"},
 
-  # # install psycopg2 drivers for Postgres
+  # install psycopg2 drivers for Postgres
   {"action":"virtualenv", "params":"pip install psycopg2",
     "message":"Installing psycopg2"},
   
@@ -130,8 +130,8 @@ configure_instance = [
   {"action":"sudo", "params":"/etc/init.d/nginx restart", "message":"Restarting nginx"},
 
   # Run collectstatic and syncdb
-  {"action":"run", "params":"python manage.py collectstatic -v 0 --noinput"},
-  {"action":"run", "params":"python manage.py syncdb"},
+  {"action":"virtualenv", "params":"python %(PROJECT_PATH)s/manage.py collectstatic -v 0 --noinput"},
+  {"action":"virtualenv", "params":"python %(PROJECT_PATH)s/manage.py syncdb"},
 
 
   # Setup supervisor
@@ -167,8 +167,8 @@ deploy = [
   {"action":"run", "params":"git --git-dir=webapps/amazon_app/.git pull"},
 
   # Update the database
-  {"action":"virtualenv", "params":"python manage.py collectstatic -v 0 --noinput"},
-  {"action":"virtualenv", "params":"python manage.py syncdb"},
+  {"action":"virtualenv", "params":"python %(PROJECT_PATH)s/manage.py collectstatic -v 0 --noinput"},
+  {"action":"virtualenv", "params":"python %(PROJECT_PATH)s/manage.py syncdb"},
 
   # Restart gunicorn to update the site
   {"action":"sudo", "params": "supervisorctl restart %(PROJECT_NAME)s"}
