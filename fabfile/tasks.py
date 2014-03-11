@@ -164,7 +164,7 @@ update_packages = [
 deploy = [
 
   # Pull the latest version from the bitbucket repo
-  {"action":"run", "params":"git --git-dir=%(PROJECT_PATH)s/.git pull"},
+  {"action":"run", "params":"cd %(PROJECT_PATH)s && git pull"},
 
   # Update the database
   {"action":"virtualenv", "params":"python %(PROJECT_PATH)s/manage.py collectstatic -v 0 --noinput"},
