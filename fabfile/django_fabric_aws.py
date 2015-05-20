@@ -72,8 +72,8 @@ def instance():
 
     # Use boto to create an EC2 instance
     env.host_string = _create_ec2_instance()
-    print(_green("Waiting 30 seconds for server to boot..."))
-    time.sleep(30)
+    print(_green("Waiting 60 seconds for server to boot..."))
+    time.sleep(60)
     
     # Configure the instance that was just created
     for item in tasks.configure_instance:
